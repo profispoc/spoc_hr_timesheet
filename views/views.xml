@@ -1,0 +1,95 @@
+<odoo>
+    <data>
+        <record id="hr_timesheet_line_tree_inherit_spoc" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.hr_timesheet.inherit.spoc</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='project_id']" position="before">
+                    <field name="partner_id" optional="show"/>
+                    <field name="is_request_check" invisible="1"/>
+                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]" attrs="{'required':[('is_request_check', '=', True)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='unit_amount']" position="before">
+                    <field name="deal_type" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="spoc_project_edit_project_inherited" model="ir.ui.view">
+            <field name="name">project.project.form.inherited.spoc</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/group/field[@name='tag_ids']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_view_task_form2_inherited" model="ir.ui.view">
+            <field name="name">project.task.form.inherited.spoc</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group/field[@name='partner_id']" position="after">
+                    <field name="is_request_check" attrs="{'invisible':1}"/>
+                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]" attrs="{'invisible':[('is_request_check', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//group/group/field[@name='tag_ids']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_timesheet_view_task_form2_inherited_spoc" model="ir.ui.view">
+            <field name="name">hr.project.task.form.inherited.spoc</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+            <field name="arch" type="xml">
+                <xpath  expr="//field[@name='timesheet_ids']" position="attributes">
+                    <attribute name="context">{'default_contact_id':contact_id, 'task_id': id}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='timesheet_ids']/tree/field[@name='unit_amount']" position="before">
+                    <field name="partner_id" invisible="1"/>
+                    <field name="is_request_check" invisible="1"/>
+                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]" attrs="{'required':[('is_request_check', '=', True)]}"/>
+                    <field name="deal_type"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="timesheet_view_search" model="ir.ui.view">
+            <field name="name">account.analytic.line.search</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='month']" position="after">
+                    <separator/>
+                    <filter name="deal_type_pay" string="To pay" domain="[('deal_type', '=', 'pay')]"/>
+                    <filter name="deal_type_pay" string="To account" domain="[('deal_type', '=', 'account')]"/>
+                    <filter name="deal_type_pay" string="Do not bill" domain="[('deal_type', '=', 'free')]"/>
+                    <separator/>
+                </xpath>
+                <xpath expr="//filter[@name='groupby_date']" position="after">
+                    <separator/>
+                    <filter string="Type of deal" name="groupby_dealtype" domain="[]"
+                            context="{'group_by': 'deal_type'}"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="base_view_partner_form_inherited" model="ir.ui.view">
+            <field name="name">res.partner.form.inherited.spoc</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='child_ids']" position="before">
+                    <field name="request_check"/>
+                    <label for="request_check"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
