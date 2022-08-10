@@ -46,3 +46,10 @@ class ProjectTask(models.Model):
             rec.is_request_check = rec.partner_id.request_check
 
     is_request_check = fields.Boolean(string="Is request check", default=False, compute=_get_request_check)
+
+class Project(models.Model):
+    _name = "project.project"
+    _inherit = "project.project"
+
+    task_def_tag_ids = fields.Many2many('project.tags', string='Task default tags', relation='project_project_project_task_tag')
+
