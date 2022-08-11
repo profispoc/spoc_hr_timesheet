@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="spoc_hr_timesheet_subtask_form">
+            <field name="name">spoc_hr_timesheet.subtask.form</field>
+            <field name="model">spoc_hr_timesheet.subtask</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="project_ids">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button string="Save Tasks list" class="btn-primary" type="object" name="save_tasks"/>
+                        <button string="Close without saving" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="spoc_subtask_act">
+            <field name="name">Fill subtasks by Projects</field>
+            <field name="res_model">spoc_hr_timesheet.subtask</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_project_task" />
+        </record>
+
+    </data>
+</odoo>

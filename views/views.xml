@@ -8,7 +8,8 @@
                 <xpath expr="//field[@name='project_id']" position="before">
                     <field name="partner_id" optional="show"/>
                     <field name="is_request_check" invisible="1"/>
-                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]" attrs="{'required':[('is_request_check', '=', True)]}"/>
+                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]"
+                           attrs="{'required':[('is_request_check', '=', True)]}"/>
                 </xpath>
                 <xpath expr="//field[@name='unit_amount']" position="before">
                     <field name="deal_type" optional="show"/>
@@ -34,10 +35,17 @@
             <field name="arch" type="xml">
                 <xpath expr="//group/group/field[@name='partner_id']" position="after">
                     <field name="is_request_check" attrs="{'invisible':1}"/>
-                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]" attrs="{'invisible':[('is_request_check', '=', False)]}"/>
+                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]"
+                           attrs="{'invisible':[('is_request_check', '=', False)]}"/>
                 </xpath>
                 <xpath expr="//group/group/field[@name='tag_ids']" position="attributes">
                     <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='child_ids']" position="before">
+                    <button name="%(spoc_hr_timesheet.spoc_subtask_act)d"
+                            type="action"
+                            string="Fill tasks by projects"
+                            class="btn-primary"> </button>
                 </xpath>
             </field>
         </record>
@@ -47,13 +55,14 @@
             <field name="model">project.task</field>
             <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
             <field name="arch" type="xml">
-                <xpath  expr="//field[@name='timesheet_ids']" position="attributes">
+                <xpath expr="//field[@name='timesheet_ids']" position="attributes">
                     <attribute name="context">{'default_contact_id':contact_id, 'task_id': id}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='timesheet_ids']/tree/field[@name='unit_amount']" position="before">
                     <field name="partner_id" invisible="1"/>
                     <field name="is_request_check" invisible="1"/>
-                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]" attrs="{'required':[('is_request_check', '=', True)]}"/>
+                    <field name="contact_id" domain="[('parent_id', '=', partner_id)]"
+                           attrs="{'required':[('is_request_check', '=', True)]}"/>
                     <field name="deal_type"/>
                 </xpath>
             </field>
