@@ -47,3 +47,29 @@ class ProjectTask(models.Model):
             rec.is_request_check = rec.partner_id.request_check
 
     is_request_check = fields.Boolean(string="Is request check", default=False, compute=_get_request_check)
+
+    @api.onchange('stage_id')
+    def _scan_n_change_stage(self):
+        if self.stage_id.is_closed:
+            if self.project_id.ref_stage_id:
+                if self.parent_id:
+                    if self.parent_id.project_id:
+                        temp_search = False
+                        temp_next = False
+                        for sid in self.parent_id.project_id.type_ids:
+                            if sid == self.project_id.ref_stage_id:
+                                temp_search = sid
+                                continue
+                            if temp_search:
+                                temp_next = sid
+                                temp_search = False
+                        if temp_next:
+                            self.parent_id.stage_id = temp_next
+
+
+class ProjectProject(models.Model):
+    _name = 'project.project'
+    _inherit = 'project.project'
+
+    ref_stage_id = fields.Many2one('project.task.type', string="Reference task stage")
+

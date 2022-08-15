@@ -25,6 +25,17 @@
                 <xpath expr="//sheet/group/group/field[@name='tag_ids']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
+                <xpath expr="//div[@id='recurring_tasks_setting']" position="after">
+                    <div class="col-lg-6 o_setting_box" id="refference_task_stage"
+                         groups="project.group_project_recurring_tasks">
+                        <div class="o_setting_right_pane">
+                            <label for="ref_stage_id"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <field name="ref_stage_id"/>
+                        </div>
+                    </div>
+                </xpath>
             </field>
         </record>
 
