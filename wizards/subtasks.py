@@ -13,6 +13,6 @@ class SubtasksFill(models.TransientModel):
         temp_task = self._context.get('active_id')
         temp_proj = self.env['project.task'].browse(temp_task).project_id
         for proj in self.project_ids:
-            self.env['project.task'].create({'name': temp_proj.name,
+            self.env['project.task'].create({'name': temp_proj.name+" "+proj.name,
                                              'display_project_id': proj.id,
                                              'parent_id': temp_task})
