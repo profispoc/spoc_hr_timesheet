@@ -48,6 +48,24 @@ class ProjectTask(models.Model):
 
     is_request_check = fields.Boolean(string="Is request check", default=False, compute=_get_request_check)
 
+    @api.onchange('stage_id')
+    def _scan_n_change_stage(self):
+        if self.stage_id.is_closed:
+            if self.project_id.ref_stage_id:
+                if self.parent_id:
+                    if self.parent_id.project_id:
+                        temp_search = False
+                        temp_next = False
+                        for sid in self.parent_id.project_id.type_ids:
+                            if sid == self.project_id.ref_stage_id:
+                                temp_search = sid
+                                continue
+                            if temp_search:
+                                temp_next = sid
+                                temp_search = False
+                        if temp_next:
+                            self.parent_id.stage_id = temp_next
+
     @api.model
     def create(self, vals_list):
         res = super(ProjectTask, self).create(vals_list)
@@ -57,9 +75,11 @@ class ProjectTask(models.Model):
             res.tag_ids = res.parent_id.tag_ids
         return res
 
-class Project(models.Model):
-    _name = "project.project"
-    _inherit = "project.project"
+
+class ProjectProject(models.Model):
+    _name = 'project.project'
+    _inherit = 'project.project'
+
+    ref_stage_id = fields.Many2one('project.task.type', string="Reference task stage")
 
     task_def_tag_ids = fields.Many2many('project.tags', string='Task default tags', relation='project_project_project_task_tag')
-
