@@ -9,12 +9,12 @@
         For S.P.O.C intern project
     """,
 
-    'author': "S.P.O.C.",
-    'company': 'S.P.O.C. Business Automation Company',
-    'maintainer': 'S.P.O.C. Business Automation Company',
+    'author': "SPOC",
+    'company': 'SPOC corp',
+    'maintainer': 'SPOC corp',
     'website': "https://spoc-odoo.com.ua",
     'category': 'Productivity',
-    'version': '2.0',
+    'version': '4.0',
 
     'depends': ['base', 'hr_timesheet'],
 
@@ -24,6 +24,8 @@
 
     # always loaded
     'data': [
+        'security/ir.model.access.csv',
+        'wizards/subtasks.xml',
         'views/views.xml',
     ],
 }

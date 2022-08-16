@@ -3,6 +3,7 @@
 
 **odoo15 module for S.P.O.C. - hr features**
 
+
 ***v.2.1_tags***
 
     1. Tags in Project and Task are required
@@ -13,3 +14,7 @@
 ***v.3.0_parent_task_kanban***
 
     In Kanban view of Task show Parent Task
+
+***v.4.0_subtask_by_project***
+
+    Wizard for subtasks to select project relations
