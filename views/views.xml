@@ -98,7 +98,7 @@
             <field name="inherit_id" ref="project.view_task_kanban"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@class='o_kanban_record_body']" position="inside">
-                    <field name="parent_id"/>
+                    <i><field name="parent_id" decoration-it="1"/></i>
                 </xpath>
             </field>
         </record>
