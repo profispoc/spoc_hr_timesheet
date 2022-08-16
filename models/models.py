@@ -46,3 +46,19 @@ class ProjectTask(models.Model):
             rec.is_request_check = rec.partner_id.request_check
 
     is_request_check = fields.Boolean(string="Is request check", default=False, compute=_get_request_check)
+
+    @api.model
+    def create(self, vals_list):
+        res = super(ProjectTask, self).create(vals_list)
+        if not res.parent_id:
+            res.tag_ids = res.project_id.task_def_tag_ids
+        else:
+            res.tag_ids = res.parent_id.tag_ids
+        return res
+
+class Project(models.Model):
+    _name = "project.project"
+    _inherit = "project.project"
+
+    task_def_tag_ids = fields.Many2many('project.tags', string='Task default tags', relation='project_project_project_task_tag')
+
