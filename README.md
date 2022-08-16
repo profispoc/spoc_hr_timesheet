@@ -9,3 +9,7 @@
     2. Project have field Task default tags added
     3. If Task default tags is filled in Project, child Task will get this to own Tags
     4. Child Task created from parent Task gets copied Tags
+
+***v.3.0_parent_task_kanban***
+
+    In Kanban view of Task show Parent Task
