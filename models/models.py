@@ -66,6 +66,15 @@ class ProjectTask(models.Model):
                         if temp_next:
                             self.parent_id.stage_id = temp_next
 
+    @api.model
+    def create(self, vals_list):
+        res = super(ProjectTask, self).create(vals_list)
+        if not res.parent_id:
+            res.tag_ids = res.project_id.task_def_tag_ids
+        else:
+            res.tag_ids = res.parent_id.tag_ids
+        return res
+
 
 class ProjectProject(models.Model):
     _name = 'project.project'
@@ -73,3 +82,4 @@ class ProjectProject(models.Model):
 
     ref_stage_id = fields.Many2one('project.task.type', string="Reference task stage")
 
+    task_def_tag_ids = fields.Many2many('project.tags', string='Task default tags', relation='project_project_project_task_tag')

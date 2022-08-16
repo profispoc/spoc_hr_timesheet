@@ -36,6 +36,9 @@
                         </div>
                     </div>
                 </xpath>
+                <xpath expr="//sheet/group/group/field[@name='tag_ids']" position="after">
+                    <field name="task_def_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                </xpath>
             </field>
         </record>
 
@@ -122,6 +125,17 @@
                 <xpath expr="//field[@name='child_ids']" position="before">
                     <field name="request_check"/>
                     <label for="request_check"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_view_task_kanban_inherited" model="ir.ui.view">
+            <field name="name">project.task.kanban.inherited.spoc</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='o_kanban_record_body']" position="inside">
+                    <i><field name="parent_id" decoration-it="1"/></i>
                 </xpath>
             </field>
         </record>
