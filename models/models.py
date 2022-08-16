@@ -80,6 +80,6 @@ class ProjectProject(models.Model):
     _name = 'project.project'
     _inherit = 'project.project'
 
-    ref_stage_id = fields.Many2one('project.task.type', string="Reference task stage")
+    ref_stage_id = fields.Many2one('project.task.type', string="Reference task stage", group_expand='_read_group_stage_ids')
 
     task_def_tag_ids = fields.Many2many('project.tags', string='Task default tags', relation='project_project_project_task_tag')
