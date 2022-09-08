@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-15 09:16+0000\n"
-"PO-Revision-Date: 2022-08-15 12:17+0300\n"
+"POT-Creation-Date: 2022-09-08 09:33+0000\n"
+"PO-Revision-Date: 2022-09-08 12:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,7 @@ msgid "Analytic Line"
 msgstr "Рядок аналітики"
 
 #. module: spoc_hr_timesheet
+#: model_terms:ir.ui.view,arch_db:spoc_hr_timesheet.spoc_hr_timesheet_project_reinit_form
 #: model_terms:ir.ui.view,arch_db:spoc_hr_timesheet.spoc_hr_timesheet_subtask_form
 msgid "Close without saving"
 msgstr "Не зберігати"
@@ -33,16 +34,19 @@ msgid "Contact"
 msgstr "Контакт"
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__create_uid
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_subtask__create_uid
 msgid "Created by"
 msgstr "Створено "
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__create_date
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_subtask__create_date
 msgid "Created on"
 msgstr "Створено"
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__display_name
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_subtask__display_name
 msgid "Display Name"
 msgstr "Відображене ім'я"
@@ -54,6 +58,7 @@ msgid "Do not bill"
 msgstr "Не виставляти"
 
 #. module: spoc_hr_timesheet
+#: model:ir.actions.act_window,name:spoc_hr_timesheet.spoc_project_reinit_act
 #: model:ir.actions.act_window,name:spoc_hr_timesheet.spoc_subtask_act
 msgid "Fill subtasks by Projects"
 msgstr "Заповнити підзавдання за проектами"
@@ -64,6 +69,17 @@ msgid "Fill tasks by projects"
 msgstr "Заповнити завдання за проектами"
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__filter_date_start
+msgid "Filter Date Start"
+msgstr "Фільтрувати початкуову дату"
+
+#. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__filter_date_stop
+msgid "Filter Date Stop"
+msgstr "Фільтрувати кінцеву дату"
+
+#. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__id
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_subtask__id
 msgid "ID"
 msgstr "АйДі"
@@ -75,16 +91,19 @@ msgid "Is request check"
 msgstr "Стан контролю заяв"
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit____last_update
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_subtask____last_update
 msgid "Last Modified on"
 msgstr "Остання модифікація"
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__write_uid
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_subtask__write_uid
 msgid "Last Updated by"
 msgstr "Останнє оновлення"
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__write_date
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_subtask__write_date
 msgid "Last Updated on"
 msgstr "Останнє оновлення"
@@ -96,9 +115,19 @@ msgid "Project"
 msgstr "Проект"
 
 #. module: spoc_hr_timesheet
+#: model:ir.ui.menu,name:spoc_hr_timesheet.menu_spoc_project_reinit
+msgid "Project reinit"
+msgstr "Реініціація проектів"
+
+#. module: spoc_hr_timesheet
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_project_project__ref_stage_id
 msgid "Reference task stage"
 msgstr "Відповідний Етап завдання"
+
+#. module: spoc_hr_timesheet
+#: model_terms:ir.ui.view,arch_db:spoc_hr_timesheet.spoc_hr_timesheet_project_reinit_form
+msgid "Reinit projects"
+msgstr "Реініціювати проекти"
 
 #. module: spoc_hr_timesheet
 #: model:ir.model.fields,field_description:spoc_hr_timesheet.field_res_partner__request_check
@@ -128,9 +157,19 @@ msgid "Task"
 msgstr "Завдання"
 
 #. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_project_project__task_def_tag_ids
+msgid "Task default tags"
+msgstr "Теги завдання за замовченням"
+
+#. module: spoc_hr_timesheet
 #: model_terms:ir.ui.view,arch_db:spoc_hr_timesheet.spoc_project_project_filter_inherited
 msgid "Technical"
 msgstr "Технічний"
+
+#. module: spoc_hr_timesheet
+#: model:ir.model.fields,field_description:spoc_hr_timesheet.field_spoc_hr_timesheet_project_reinit__timesheets
+msgid "Timesheets"
+msgstr "Табелі"
 
 #. module: spoc_hr_timesheet
 #: model:ir.model.fields.selection,name:spoc_hr_timesheet.selection__account_analytic_line__deal_type__account
@@ -149,3 +188,8 @@ msgstr "До сплати"
 #: model_terms:ir.ui.view,arch_db:spoc_hr_timesheet.timesheet_view_search
 msgid "Type of deal"
 msgstr "Тип часу"
+
+#. module: spoc_hr_timesheet
+#: model:ir.model,name:spoc_hr_timesheet.model_spoc_hr_timesheet_project_reinit
+msgid "spoc_hr_timesheet.project_reinit"
+msgstr "SPOC Реініціалізація проектів"
