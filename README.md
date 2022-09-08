@@ -22,3 +22,8 @@
 ***v.5.0_tech_project_stages***
 
     Relations and functionalities between task stages
+
+***v.6.0_tech_project_reinit***
+
+    If task links to tech project and has parent task 
+    with nontech project, link timesheet to nontech project
