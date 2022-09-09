@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="spoc_hr_timesheet_project_reinit_form">
+            <field name="name">Project reinit form</field>
+            <field name="model">spoc_hr_timesheet.project_reinit</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <field name="filter_date_start"/>
+                        <field name="filter_date_stop"/>
+                    </group>
+                    <field name="timesheets">
+                        <tree>
+                            <field name="date"/>
+                            <field name="employee_id"/>
+                            <field name="project_id"/>
+                            <field name="task_id"/>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <!--<button string="Refill list" type="object" name="fill_timesheets"/>-->
+                        <button string="Reinit projects" class="btn-primary" type="object" name="save_timesheets"/>
+                        <button string="Close without saving" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="spoc_project_reinit_act">
+            <field name="name">Fill subtasks by Projects</field>
+            <field name="res_model">spoc_hr_timesheet.project_reinit</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_spoc_project_reinit"
+                  name="Project reinit"
+                  parent="hr_timesheet.menu_hr_time_tracking"
+                  groups="hr_timesheet.group_hr_timesheet_approver"
+                  action="spoc_project_reinit_act"/>
+
+    </data>
+</odoo>
