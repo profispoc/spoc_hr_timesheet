@@ -21,7 +21,6 @@ class AccountAnalyticLine(models.Model):
             if line.partner_id:
                 return {'domain': {'project_id': [('partner_id', '=', line.partner_id.id)]}}
 
-
     @api.depends('partner_id')
     def _get_request_check(self):
         for rec in self:
@@ -52,15 +51,43 @@ class AccountAnalyticLine(models.Model):
         if is_proj_cond:
             ts.write({'project_id': ts.task_id.parent_id.project_id.id})
 
+    def timesheet_name_prefix(self):
+        ts = self.env['account.analytic.line'].browse(self.id)
+        is_task_cond = False
+        is_tag_cond =  False
+        is_proj_cond = False
+
+        if ts.task_id:
+            if ts.task_id.parent_id:
+                if ts.task_id.parent_id.project_id:
+                    is_task_cond = True
+
+        if is_task_cond:
+            for tag in ts.task_id.project_id.tag_ids:
+                if tag.name == 'технічний проект':
+                    is_tag_cond = True
+
+        if is_tag_cond:
+            if ts.project_id != ts.task_id.project_id:
+                is_proj_cond = True
+
+        if is_proj_cond:
+            tech_project_name = ts.task_id.project_id.name
+            ts_name = ts.name
+            if ts.name[0:len(tech_project_name)] != tech_project_name:
+                ts.write({'name': tech_project_name+"@"+ts_name})
+
     @api.model
     def create(self, vals_list):
         res = super(AccountAnalyticLine, self).create(vals_list)
         self.timesheet_project_reinit()
+        self.timesheet_name_prefix()
         return res
 
     def write(self, vals):
         res = super(AccountAnalyticLine, self).write(vals)
         self.timesheet_project_reinit()
+        self.timesheet_name_prefix()
         return res
 
 
