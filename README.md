@@ -27,3 +27,7 @@
 
     If task links to tech project and has parent task 
     with nontech project, link timesheet to nontech project
+
+***v.7.0_checkbox_following***
+
+    Following checkbox default false in mail chatters
