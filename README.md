@@ -27,3 +27,7 @@
 
     If task links to tech project and has parent task 
     with nontech project, link timesheet to nontech project
+
+***v.6.1_auto_project_reinit***
+
+    Auto name prefix with technical project name for tasks
