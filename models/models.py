@@ -75,15 +75,6 @@ class ProjectTask(models.Model):
             res.tag_ids = res.parent_id.tag_ids
         return res
 
-    def fill_subtask_by_user(self):
-        temp_task = self.env['project.task'].browse(self.id)
-        temp_proj = temp_task.project_id
-        for user in temp_task.user_ids:
-            self.env['project.task'].create({'name': temp_task.name,
-                                                 'display_project_id': temp_proj.id,
-                                                 'parent_id': temp_task.id,
-                                                 'user_ids': [user.id]})
-
 class ProjectProject(models.Model):
     _name = 'project.project'
     _inherit = 'project.project'

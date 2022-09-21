@@ -74,9 +74,10 @@
                             string="Fill tasks by projects"
                             class="btn-primary"
                             attrs="{'invisible':[('child_ids', '!=', [])]}"></button>
-                    <button name="fill_subtask_by_user"
-                            type="object"
-                            string="Fill tasks by user"
+                    <button name="%(spoc_hr_timesheet.spoc_subtask_user_act)d"
+                            type="action"
+                            context="{'user_ids': user_ids, }"
+                            string="Doubling by individual tasks"
                             attrs="{'invisible':[('child_ids', '!=', [])]}"></button>
                 </xpath>
             </field>
