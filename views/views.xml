@@ -74,6 +74,10 @@
                             string="Fill tasks by projects"
                             class="btn-primary"
                             attrs="{'invisible':[('child_ids', '!=', [])]}"></button>
+                    <button name="fill_subtask_by_user"
+                            type="object"
+                            string="Fill tasks by user"
+                            attrs="{'invisible':[('child_ids', '!=', [])]}"></button>
                 </xpath>
             </field>
         </record>
