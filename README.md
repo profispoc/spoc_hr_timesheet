@@ -27,6 +27,14 @@
 
     If task links to tech project and has parent task 
     with nontech project, link timesheet to nontech project
+    
+***v.6.1_auto_project_reinit***
+
+    Auto name prefix with technical project name for tasks
+
+***v.7.0_checkbox_following***
+
+    Following checkbox default false in mail chatters
 
 ***v.8.0_subtasks_by_user
     
