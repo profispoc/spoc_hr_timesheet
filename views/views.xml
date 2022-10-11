@@ -80,9 +80,8 @@
                             attrs="{'invisible':[('child_ids', '!=', [])]}" />
                     <button name="%(spoc_hr_timesheet.spoc_subtask_user_act)d"
                             type="action"
-                            context="{'user_ids': user_ids, }"
-                            string="Doubling by individual tasks"
-                            attrs="{'invisible':[('child_ids', '!=', [])]}" />
+                            context="{'user_ids': user_ids, 'child_ids': child_ids}"
+                            string="Doubling by individual tasks" />
                 </xpath>
             </field>
         </record>
