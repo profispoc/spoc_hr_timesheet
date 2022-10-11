@@ -14,9 +14,9 @@
     'maintainer': 'SPOC corp',
     'website': "https://spoc-odoo.com.ua",
     'category': 'Productivity',
-    'version': '6.1',
+    'version': '7.0',
 
-    'depends': ['base', 'hr_timesheet'],
+    'depends': ['base', 'hr_timesheet', 'mail'],
 
     'license': "LGPL-3",
     'installable': True,
@@ -29,4 +29,10 @@
         'wizards/project_reinit.xml',
         'views/views.xml',
     ],
+
+    'assets': {
+        'web.assets_backend': [
+            'spoc_hr_timesheet/static/src/js/suggested_recipient_info.js',
+        ],
+    },
 }
