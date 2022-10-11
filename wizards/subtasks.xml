@@ -24,7 +24,6 @@
             <field name="res_model">spoc_hr_timesheet.subtask</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
-            <field name="binding_model_id" ref="model_project_task" />
         </record>
 
     </data>
