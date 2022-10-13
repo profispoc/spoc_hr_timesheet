@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="spoc_hr_timesheet_subtask_user_form">
+            <field name="name">Doubling by individual tasks</field>
+            <field name="model">subtaskuser</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                   <field name="subtaskuser_line_ids">
+                       <tree create="false" delete="false" editable="top">
+                           <field name="to_subtask" />
+                           <field name="user_id" />
+                       </tree>
+                   </field>
+                   <footer>
+                        <button string="Save Tasks list" class="btn-primary" type="object" name="save_tasks"/>
+                        <button string="Close without saving" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="spoc_subtask_user_act">
+            <field name="name">Doubling by individual tasks</field>
+            <field name="res_model">subtaskuser</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
