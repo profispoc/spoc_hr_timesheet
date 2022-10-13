@@ -14,7 +14,7 @@
     'maintainer': 'SPOC corp',
     'website': "https://spoc-odoo.com.ua",
     'category': 'Productivity',
-    'version': '6.0',
+    'version': '15.0.1.8.1',
 
     'depends': ['base', 'hr_timesheet'],
 
@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'wizards/subtasks.xml',
         'wizards/project_reinit.xml',
+        'wizards/subtasks_user.xml',
         'views/views.xml',
     ],
 }

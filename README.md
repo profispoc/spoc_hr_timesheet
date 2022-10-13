@@ -27,3 +27,7 @@
 
     If task links to tech project and has parent task 
     with nontech project, link timesheet to nontech project
+
+***v.8.0_subtasks_by_user
+    
+    Functional button to fill subtusks by responcive employees

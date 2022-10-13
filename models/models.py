@@ -75,7 +75,6 @@ class ProjectTask(models.Model):
             res.tag_ids = res.parent_id.tag_ids
         return res
 
-
 class ProjectProject(models.Model):
     _name = 'project.project'
     _inherit = 'project.project'
