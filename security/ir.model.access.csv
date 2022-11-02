@@ -3,3 +3,4 @@ access_spoc_subtask,access.spoc.subtask,model_spoc_hr_timesheet_subtask,base.gro
 access_spoc_project_reinit,access.spoc.project_reinit,model_spoc_hr_timesheet_project_reinit,base.group_user,1,1,1,1
 access_spoc_subtask_user,access.spoc.subtask_user,model_subtaskuser,base.group_user,1,1,1,1
 access_spoc_subtask_user_line,access.spoc.subtask_user_line,model_subtaskuser_line,base.group_user,1,1,1,1
+access_spoc_individual_recompute,access.spoc.individual_recompute,model_individual_recompute,base.group_user,1,1,1,1

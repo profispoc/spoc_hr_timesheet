@@ -47,9 +47,7 @@ class ProjectTask(models.Model):
             if len(rec.user_ids) != 1:
                 rec.only_user = False
             else:
-                for user in rec.user_ids:
-                    if user == self.env.user:
-                        rec.only_user = user
+                rec.only_user = rec.user_ids[0]
 
     contact_id = fields.Many2one("res.partner", string="Responsive contact", default=False, required=False)
 
