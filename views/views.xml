@@ -142,8 +142,23 @@
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_kanban"/>
             <field name="arch" type="xml">
+                <xpath expr="//div[@class='o_kanban_record_headings']/strong" position="before">
+                    <b><span>#</span><field name="id"/><span>#</span></b>
+                </xpath>
                 <xpath expr="//div[@class='o_kanban_record_body']" position="inside">
                     <i><field name="parent_id" decoration-it="1"/></i>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_task_search_form_inherited" model="ir.ui.view">
+            <field name="name">project.task.search.inherited</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="id" string="Task number"/>
+                    <separator/>
                 </xpath>
             </field>
         </record>
