@@ -160,6 +160,9 @@
                     <field name="id" string="Task number"/>
                     <separator/>
                 </xpath>
+                <xpath expr="//filter[@name='my_tasks']" position="after">
+                    <filter string="Individual Tasks" name="individual_tasks" domain="[('only_user', '=', uid)]"/>
+                </xpath>
             </field>
         </record>
     </data>

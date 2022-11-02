@@ -39,6 +39,18 @@ class ProjectTask(models.Model):
     _name = 'project.task'
     _inherit = 'project.task'
 
+    only_user = fields.Many2one("res.users", store=True, compute="_compute_only_user")
+
+    @api.depends('user_ids')
+    def _compute_only_user(self):
+        for rec in self:
+            if len(rec.user_ids) != 1:
+                rec.only_user = False
+            else:
+                for user in rec.user_ids:
+                    if user == self.env.user:
+                        rec.only_user = user
+
     contact_id = fields.Many2one("res.partner", string="Responsive contact", default=False, required=False)
 
     @api.depends('partner_id')
