@@ -19,7 +19,7 @@ class ProjectReinit(models.TransientModel):
         for ts in timesheets:
             is_check = False
             for tag in ts.task_id.project_id.tag_ids:
-                if tag.name == 'технічний проект':
+                if tag.is_tech:
                     if ts.project_id == ts.task_id.project_id:
                         is_check = True
             if is_check:
