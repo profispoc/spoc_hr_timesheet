@@ -16,7 +16,8 @@
     'category': 'Productivity',
     'version': '15.0.1.8.1',
 
-    'depends': ['base', 'hr_timesheet'],
+    'depends': ['base', 'hr_timesheet', 'sale_timesheet'],
+    'sequence': 150,
 
     'license': "LGPL-3",
     'installable': True,
