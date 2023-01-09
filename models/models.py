@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+from odoo.osv import expression
 
 class AccountAnalyticLine(models.Model):
     _name = 'account.analytic.line'
@@ -92,3 +92,16 @@ class ProjectProject(models.Model):
     ref_stage_id = fields.Many2one('project.task.type', string="Reference task stage")
 
     task_def_tag_ids = fields.Many2many('project.tags', string='Task default tags', relation='project_project_project_task_tag')
+
+
+class SaleOrderLine(models.Model):
+
+    _inherit = "sale.order.line"
+
+    @api.depends('analytic_line_ids.deal_type')
+    def _compute_qty_delivered(self):
+        super(SaleOrderLine, self)._compute_qty_delivered()
+
+    def _timesheet_compute_delivered_quantity_domain(self):
+        domain = super(SaleOrderLine, self)._timesheet_compute_delivered_quantity_domain()
+        return expression.AND([domain, [('deal_type', '=', 'pay')]])
