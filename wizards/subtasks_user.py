@@ -38,6 +38,7 @@ class SubtasksFillUser(models.TransientModel):
         for user_line in self.subtaskuser_line_ids:
             if user_line.to_subtask:
                 self.env['project.task'].create({'name': temp_task.name,
+                                                 'description': temp_task.description,
                                                  'display_project_id': temp_proj.id,
                                                  'parent_id': temp_task.id,
                                                  'user_ids': [user_line.user_id.id]})
