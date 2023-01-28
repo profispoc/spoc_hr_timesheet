@@ -165,5 +165,16 @@
                 </xpath>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="spoc_odoo_task_type_add">
+            <field name="name">project.task.type.form</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fold']" position="after">
+                    <field name="is_closed" />
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>

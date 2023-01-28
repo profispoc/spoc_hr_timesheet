@@ -105,3 +105,9 @@ class SaleOrderLine(models.Model):
     def _timesheet_compute_delivered_quantity_domain(self):
         domain = super(SaleOrderLine, self)._timesheet_compute_delivered_quantity_domain()
         return expression.AND([domain, [('deal_type', '=', 'pay')]])
+
+
+class ProjectTaskType(models.Model):
+    _inherit = 'project.task.type'
+
+    is_closed = fields.Boolean(string="Closing stage")
